@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant M as Main
+    participant U as User
+    participant C as Course
+    participant Co as Content
+    M->>U: create user
+    U->>M: return user
+    M->>U: login user
+    U->>M: return user
+    M->>C: create course
+    C->>M: return course
+    U->>C: add course
+    C->>U: update user
+    M->>Co: create content
+    Co->>M: return content
+    C->>Co: add content
+    Co->>C: update course
+    M->>U: logout user
+    U->>M: end session

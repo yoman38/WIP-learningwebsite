@@ -1,0 +1,30 @@
+## templates/course.html
+"""
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    {% if course.creator == current_user %}
+        <a href="{{ url_for('update_course', course_id=course.id) }}">Update</a>
+        <form action="{{ url_for('delete_course', course_id=course.id) }}" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    {% endif %}
+    <hr>
+    {% for content in course.content %}
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.body }}</p>
+        {% if course.creator == current_user %}
+            <a href="{{ url_for('update_content', course_id=course.id, content_id=content.id) }}">Update</a>
+            <form action="{{ url_for('delete_content', course_id=course.id, content_id=content.id) }}" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        {% endif %}
+        <hr>
+    {% endfor %}
+    {% if course.creator == current_user %}
+        <a href="{{ url_for('new_content', course_id=course.id) }}">Add Content</a>
+    {% endif %}
+{% endblock %}
+"""

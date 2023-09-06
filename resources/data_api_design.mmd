@@ -1,0 +1,30 @@
+classDiagram
+    class User{
+        +int id
+        +str username
+        +str email
+        +str password
+        +list courses
+        +__init__(username: str, email: str, password: str)
+        +add_course(course: Course)
+        +remove_course(course: Course)
+    }
+    class Course{
+        +int id
+        +str title
+        +str description
+        +list content
+        +User creator
+        +__init__(title: str, description: str, creator: User)
+        +add_content(content: Content)
+        +remove_content(content: Content)
+    }
+    class Content{
+        +int id
+        +str title
+        +str body
+        +Course course
+        +__init__(title: str, body: str, course: Course)
+    }
+    User "1" -- "*" Course: creates
+    Course "1" -- "*" Content: contains

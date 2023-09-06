@@ -1,0 +1,21 @@
+## templates/profile.html
+"""
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>{{ current_user.username }}'s Profile</h1>
+    <hr>
+    <h2>Your Courses</h2>
+    {% for course in current_user.courses %}
+        <div class="course">
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <a href="{{ url_for('course', course_id=course.id) }}">View Course</a>
+        </div>
+        <hr>
+    {% else %}
+        <p>You have not created any courses yet.</p>
+    {% endfor %}
+    <a href="{{ url_for('new_course') }}">Create New Course</a>
+{% endblock %}
+"""
